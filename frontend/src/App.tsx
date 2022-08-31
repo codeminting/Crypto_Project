@@ -1,14 +1,17 @@
-import React from 'react';
-import './App.css';
 // Chakra UI
-import { Button } from '@chakra-ui/react'
+import { Routes, Route } from 'react-router-dom';
+import Navbar from './components/Navbar/Navbar';
 
-function App() {  
+function App() {
   return (
-    <div className="App">
-      <h1 className="text-3xl font-bold">Hello world!</h1>
-      <Button colorScheme='blue'>Button</Button>
-    </div>
+    <>
+      <Navbar />
+      <Routes>
+        <Route path="/menu-link1" element={<h1>Home</h1>} />
+        <Route path="/menu-link2" element={<h1>about</h1>} />
+        <Route path="/menu-link3" element={<h1>contact</h1>} />
+      </Routes>
+    </>
   );
 }
 

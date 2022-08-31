@@ -3,7 +3,7 @@ import cors from "cors";
 // DB
 import pool from "../configs/db";
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3000;
 // Routes
 import homeRouter from "../routes/home";
 
@@ -15,7 +15,7 @@ app.use(cors());
 // Connect to dev database
 const connect = async () => {
   try {
-    const client = await pool.connect();;
+    const client = await pool.connect();
     console.log("connected to database");
     const data = await client.query(`SELECT * FROM users`);
     console.log(data.rows);
