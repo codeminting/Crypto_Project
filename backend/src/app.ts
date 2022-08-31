@@ -15,7 +15,7 @@ app.use(cors());
 // Connect to dev database
 const connect = async () => {
   try {
-    const client = await pool.connect();;
+    const client = await pool.connect();
     console.log("connected to database");
     const data = await client.query(`SELECT * FROM users`);
     console.log(data.rows);
