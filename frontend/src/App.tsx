@@ -2,6 +2,8 @@ import { Routes, Route, Navigate } from "react-router-dom";
 // Redux
 import { useSelector } from "react-redux";
 import { RootState } from "./configs/store";
+// Pages
+import Home from "./pages/Home";
 // Components
 import Navbar from "./components/Navbar/Navbar";
 
@@ -13,7 +15,7 @@ function App() {
     <>
       <Navbar />
       <Routes>
-        <Route path="/" element={<h1>Home</h1>} />
+        <Route path="/" element={<Home />} />
         <Route
           path="/trade"
           element={isLoggedIn ? <h1>Trade</h1> : <Navigate to="/" replace />}
