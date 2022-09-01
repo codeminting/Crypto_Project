@@ -40,7 +40,7 @@ const CarouselCard = ({ data }: Props) => {
           </div>
           <div className="text-gray-600 font-bold">
             <span className="text-gray-500 font-semibold">Max Supply:</span>{" "}
-            {parseInt(data.maxSupply)}
+            {data.maxSupply ? parseInt(data.maxSupply) : "N/A"}
           </div>
         </div>
         {data.maxSupply && (
