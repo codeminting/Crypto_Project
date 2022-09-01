@@ -27,7 +27,7 @@ const Home = () => {
     const fetchData = async () => {
       const result = await fetch("https://api.coincap.io/v2/assets");
       const data = await result.json();
-      setCryptoData(data.data.slice(0, 6));
+      setCryptoData(data.data.slice(0, 10));
     };
     fetchData();
   }, []);
