@@ -4,6 +4,7 @@ import AliceCarousel from "react-alice-carousel";
 import "react-alice-carousel/lib/alice-carousel.css";
 // Components
 import CarouselCard from "../components/Home/CarouselCard";
+import MainTable from "../components/Home/MainTable";
 
 // Interface
 export interface CryptoData {
@@ -13,6 +14,7 @@ export interface CryptoData {
   rank: string;
   priceUsd: string;
   volumeUsd24Hr: string;
+  changePercent24Hr: string;
   marketCapUsd: string;
   supply: string;
   maxSupply: string;
@@ -25,9 +27,9 @@ const Home = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const result = await fetch("https://api.coincap.io/v2/assets");
+      const result = await fetch("https://api.coincap.io/v2/assets?limit=10");
       const data = await result.json();
-      setCryptoData(data.data.slice(0, 10));
+      setCryptoData(data.data);
     };
     fetchData();
   }, []);
@@ -52,8 +54,8 @@ const Home = () => {
   };
 
   return (
-    <div className="flex justify-center items-center mt-5">
-      <div className="w-[80%]">
+    <div className="flex flex-col justify-center items-center mt-5">
+      <div className="md:w-[80%]">
         <AliceCarousel
           mouseTracking
           items={renderCard()}
@@ -61,6 +63,9 @@ const Home = () => {
           controlsStrategy="alternate"
           disableDotsControls={true}
         />
+      </div>
+      <div className="md:w-[80%] my-10">
+        <MainTable />
       </div>
     </div>
   );
