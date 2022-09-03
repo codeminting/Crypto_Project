@@ -55,7 +55,7 @@ const Home = () => {
 
   return (
     <div className="flex flex-col justify-center items-center mt-5">
-      <div className="md:w-[80%]">
+      <div className="w-[80%]">
         <AliceCarousel
           mouseTracking
           items={renderCard()}
@@ -64,7 +64,7 @@ const Home = () => {
           disableDotsControls={true}
         />
       </div>
-      <div className="md:w-[80%] my-10">
+      <div className="w-[80%] my-10">
         <MainTable />
       </div>
     </div>
