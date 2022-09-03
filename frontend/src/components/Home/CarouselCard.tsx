@@ -71,7 +71,12 @@ const CarouselCard = ({ data }: Props) => {
       </div>
       <Divider className="my-2" />
       <div className="flex justify-end">
-        <a href={data.explorer} target="_blank" rel="noreferrer" className="flex items-center font-medium text-gray-500 hover:text-gray-600">
+        <a
+          href={data.explorer}
+          target="_blank"
+          rel="noreferrer"
+          className="flex items-center font-medium text-gray-500 hover:text-gray-600"
+        >
           <FiExternalLink className="mr-2" />
           Explorer
         </a>
