@@ -54,19 +54,29 @@ const Login = ({ isOpen, onClose }: LoginPropsTypes) => {
 
             <FormControl className="mb-5" isRequired>
               <FormLabel>
-                <MdPassword className="inline mr-1" /> Password
+                <MdPassword className="inline mr-1" />
+                Password
               </FormLabel>
               <Input type="password" />
             </FormControl>
           </ModalBody>
 
           <ModalFooter>
-            <Button colorScheme={"red"} mr={5} size="lg" rightIcon={<TiDeleteOutline size={20} />}>
-              Reset
+            <Button
+              colorScheme={"blue"}
+              mr={5}
+              size="lg"
+              rightIcon={<IoMdLogIn size={20} />}
+            >
+              Log In
             </Button>
 
-            <Button colorScheme={"blue"} size="lg" rightIcon={<IoMdLogIn size={20} />}>
-              Log In
+            <Button
+              colorScheme={"red"}
+              size="lg"
+              rightIcon={<TiDeleteOutline size={20} />}
+            >
+              Cancel
             </Button>
           </ModalFooter>
         </ModalContent>
