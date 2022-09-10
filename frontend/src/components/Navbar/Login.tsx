@@ -1,4 +1,14 @@
-import React from "react";
+import React, {useState} from "react";
+
+// Firebase
+import {auth} from "../../configs/firebaseConfig";
+import { signInWithEmailAndPassword } from "firebase/auth";
+
+// Redux
+import {useDispatch} from "react-redux";
+import {setLoggedIn, setUser} from "../../features/UserSlice";
+
+// Chakra UI
 import {
   Modal,
   ModalOverlay,
@@ -29,6 +39,19 @@ interface LoginPropsTypes {
 }
 
 const Login = ({ isOpen, onClose }: LoginPropsTypes) => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
+
+  const handleLogin = async () => {
+    try {
+      const user = await signInWithEmailAndPassword(auth, email, password);
+      dispatch(setUser(user.user));
+      dispatch(setLoggedIn(true));
+    }
+    catch(error) {console.log(error);}
+  }
+  
   return (
     <>
       <Modal isOpen={isOpen} onClose={onClose}>
@@ -44,7 +67,7 @@ const Login = ({ isOpen, onClose }: LoginPropsTypes) => {
                 <HiOutlineMail className="inline mr-1" />
                 Email Address
               </FormLabel>
-              <Input type="email" />
+              <Input type="email" value={email} onChange={(e)=>setEmail(e.target.value)}/>
               {/* <FormHelperText>Please Enter Your Email</FormHelperText> */}
               <FormErrorMessage>
                 <FormErrorIcon />
@@ -57,7 +80,7 @@ const Login = ({ isOpen, onClose }: LoginPropsTypes) => {
                 <MdPassword className="inline mr-1" />
                 Password
               </FormLabel>
-              <Input type="password" />
+              <Input type="password" value={password} onChange={(e)=>setPassword(e.target.value)}/>
             </FormControl>
           </ModalBody>
 
@@ -67,6 +90,7 @@ const Login = ({ isOpen, onClose }: LoginPropsTypes) => {
               mr={5}
               size="lg"
               rightIcon={<IoMdLogIn size={20} />}
+              onClick={handleLogin}
             >
               Log In
             </Button>
