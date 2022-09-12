@@ -48,6 +48,7 @@ const Login = ({ isOpen, onClose }: LoginPropsTypes) => {
       const user = await signInWithEmailAndPassword(auth, email, password);
       dispatch(setUser(user.user));
       dispatch(setLoggedIn(true));
+      onClose();
     }
     catch(error) {console.log(error);}
   }
